@@ -1,11 +1,4 @@
 # -*- mode: gitignore; -*-
-
-auto-save-list
-.cache
-elpa
-org-persist
-.lsp-session*
-
 *~
 \#*\#
 /.emacs.desktop
