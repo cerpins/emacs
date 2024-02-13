@@ -34,6 +34,8 @@
 	 ;;(prog-mode . lsp)
 	 (html-mode . lsp)
 	 (rust-mode . lsp)
+	 (typescript-ts-mode . lsp) ;; Not in use, but should be
+	 (typescript-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp))
 (use-package lsp-ui
@@ -50,17 +52,24 @@
 
 ;; Setup global syntax highlighting
 (use-package tree-sitter-langs)
-(use-package tree-sitter
+(use-package tree-sitter ;; TODO: Use inbuilt version 'treesit'?
   :config
   (require 'tree-sitter-langs)
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+;; Setup TYPESCRIPT
+(use-package typescript-mode)
 
 ;; Setup lang RUST
 (use-package rust-mode)
 ;;  :init
 ;;  (setq lsp-inlay-hint-enable t))
 ;; todo: re-enable inlay hints t
+
+;; Setup lang TYPESCRIPT
+;; lang-server used is ts-ls
+;; typescript-ts-mode
 
 ;; Remember files
 (desktop-save-mode 1)
@@ -80,7 +89,7 @@
  '(lsp-html-format-content-unformatted nil)
  '(lsp-html-format-enable nil)
  '(package-selected-packages
-   '(tree-sitter-langs tree-sitter flychecka flycheck which-key rust-mode lsp-ui lsp-treemacs company)))
+   '(typescript-mode tree-sitter-langs tree-sitter flychecka flycheck which-key rust-mode lsp-ui lsp-treemacs company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
