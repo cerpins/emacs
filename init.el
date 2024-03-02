@@ -22,6 +22,7 @@
   :config
   (global-set-key (kbd "C-. .") #'company-complete)
   (global-company-mode))
+
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-.")
@@ -42,6 +43,7 @@
 	 (rust-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp))
+
 (use-package lsp-ui
   :init
   ;; Signature
@@ -74,6 +76,9 @@
   (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save idle-buffer-switch idle-change new-line mode-enabled)
       flycheck-idle-buffer-switch-delay 0))
+
+;; Conflict resolution
+(use-package smerge-mode)
 
 ;; Setup global syntax highlighting
 (use-package tree-sitter-langs)
