@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -17,17 +21,15 @@
 
 ;; Setup LSP
 (use-package company
-  :init
-  (setq company-minimum-prefix-length 1)
   :config
+  (setq company-minimum-prefix-length 1)
   (global-set-key (kbd "C-c c") #'company-complete)
   (global-company-mode))
 
 (use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l")
   :commands (lsp-describe-thing-at-point)
   :config
+  (setq lsp-keymap-prefix "C-c l")
   (global-set-key (kbd "C-c d") #'lsp-describe-thing-at-point) ;; Show doc at point
   (global-set-key (kbd "C-c g") #'goto-line) ;; Goto line
   (global-set-key (kbd "C-c /") #'comment-line) ;; Comment marked block
@@ -51,7 +53,10 @@
   :commands (lsp))
 
 (use-package lsp-ui
-  :init
+  :config
+  ;; Eldoc
+  (setq lsp-eldoc-enable-hover nil)
+  (setq lsp-eldoc-render-all nil)
   ;; Signature
   (setq lsp-signature-auto-activate nil)
   (setq lsp-signature-render-documentation nil)
@@ -65,6 +70,7 @@
   (setq lsp-lens-enable nil)
   ;; Modeline
   (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-modeline-diagnostics-enable nil)
   ;; Sideline options
   (setq lsp-ui-sideline-enable t)
   (setq lsp-ui-sideline-show-code-actions nil)
@@ -81,6 +87,7 @@
   :commands (flycheck-list-errors)
   :config
   (global-set-key (kbd "C-c e") #'flycheck-list-errors) ;; List flycheck errors
+  (setq flycheck-display-errors-function nil)
   :init
   (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save idle-buffer-switch idle-change new-line mode-enabled)
@@ -104,7 +111,7 @@
 (use-package rust-mode)
 ;;  :init
 ;;  (setq lsp-inlay-hint-enable t))
-;; todo: re-enable inlay hints t
+;; todo: re-enable inlay hints t -- or nope
 
 ;; Setup lang TYPESCRIPT
 ;; lang-server used is ts-ls
@@ -145,6 +152,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-
 
