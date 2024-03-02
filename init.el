@@ -17,13 +17,23 @@
 
 ;; Setup LSP
 (use-package company
+  :init
+  (setq company-minimum-prefix-length 1)
   :config
-  (global-set-key (kbd "C-. .") #'company-complete)
+  (global-set-key (kbd "C-c c") #'company-complete)
   (global-company-mode))
+
 (use-package lsp-mode
   :init
-  (setq lsp-keymap-prefix "C-.")
-  (setq lsp-enable-snippet nil)
+  (setq lsp-keymap-prefix "C-c l")
+  :commands (lsp-describe-thing-at-point)
+  :config
+  (global-set-key (kbd "C-c d") #'lsp-describe-thing-at-point) ;; Show doc at point
+  (global-set-key (kbd "C-c g") #'goto-line) ;; Goto line
+  (global-set-key (kbd "C-c /") #'comment-line) ;; Comment marked block
+  
+
+  ;;(setq lsp-enable-snippet nil)
   ;;:custom
   ;;(lsp-typescript-format-enable . nil)
   ;;(lsp-javascript-format-enable . nil)
@@ -36,19 +46,48 @@
 	 (rust-mode . lsp)
 	 (typescript-ts-mode . lsp) ;; Not in use, but should be
 	 (typescript-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
+         (lsp-mode . lsp-enable-which-key-integration) ;; enable which-key for showing key completion
+	 (lsp-mode . display-line-numbers-mode)) ;; enable line numbers
   :commands (lsp))
+
 (use-package lsp-ui
+  :init
+  ;; Signature
+  (setq lsp-signature-auto-activate nil)
+  (setq lsp-signature-render-documentation nil)
+  ;; Headerline
+  (setq lsp-headerline-breadcrumb-enable t)
+  ;; Lsp doc - Pretty annoying, we use 'lsp-describe-thing-at-point' instead
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-show-with-mouse nil)
+  (setq lsp-ui-doc-show-with-cursor nil)
+  ;; Lens
+  (setq lsp-lens-enable nil)
+  ;; Modeline
+  (setq lsp-modeline-code-actions-enable nil)
+  ;; Sideline options
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-ui-sideline-show-diagnostics nil)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-symbol t)
   :commands (lsp-ui-mode))
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 (use-package which-key
   :config
-  (which-key-mode))
+  (which-key-mode)
+  (setq which-key-idle-delay 0.5))
 (use-package flycheck
+  :commands (flycheck-list-errors)
+  :config
+  (global-set-key (kbd "C-c e") #'flycheck-list-errors) ;; List flycheck errors
   :init
   (global-flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save idle-buffer-switch idle-change new-line mode-enabled)
       flycheck-idle-buffer-switch-delay 0))
+
+;; Conflict resolution
+(use-package smerge-mode)
 
 ;; Setup global syntax highlighting
 (use-package tree-sitter-langs)
@@ -75,24 +114,37 @@
 (desktop-save-mode 1)
 
 ;; Fonts
-(add-to-list 'custom-theme-load-path "c:/Users/unoce/Documents/emacs")
-(eval-after-load "timu-macos"
-(customize-set-variable 'timu-macos-flavour "dark"))
-(load-theme 'timu-macos t)
 (set-frame-font "-outline-Source Code Pro-regular-normal-normal-mono-16-*-*-*-c-*-iso10646-1")
+
+
+;; Themes
+;; (eval-after-load "timu-macos"
+;;  (customize-set-variable 'timu-macos-flavour "dark"))
+;; (load-theme 'timu-macos t)
+(add-to-list 'custom-theme-load-path "c:/Users/unoce/Documents/emacs")
+(use-package naysayer-theme)
+(load-theme 'naysayer t)
+
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("18cf5d20a45ea1dff2e2ffd6fbcd15082f9aa9705011a3929e77129a971d1cb3" default))
  '(lsp-html-format-content-unformatted nil)
  '(lsp-html-format-enable nil)
  '(package-selected-packages
-   '(typescript-mode tree-sitter-langs tree-sitter flychecka flycheck which-key rust-mode lsp-ui lsp-treemacs company)))
+   '(typescript-mode naysayer-theme zenburn-theme zenburn tree-sitter-langs tree-sitter flychecka flycheck which-key rust-mode lsp-ui lsp-treemacs company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+
