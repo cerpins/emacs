@@ -75,9 +75,10 @@
   (setq lsp-ui-sideline-enable t)
   (setq lsp-ui-sideline-show-code-actions nil)
   (setq lsp-ui-sideline-show-diagnostics nil)
-  (setq lsp-ui-sideline-show-hover nil)
-  (setq lsp-ui-sideline-show-symbol t)
+  (setq lsp-ui-sideline-show-hover t)
+  (setq lsp-ui-sideline-show-symbol nil)
   :commands (lsp-ui-mode))
+
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 (use-package which-key
   :config
