@@ -28,13 +28,14 @@
 
 (use-package lsp-mode
   :commands (lsp-describe-thing-at-point)
-  :config
+  :init
   (setq lsp-keymap-prefix "C-c l")
   (global-set-key (kbd "C-c d") #'lsp-describe-thing-at-point) ;; Show doc at point
+  (global-set-key (kbd "C-c a") #'lsp-ui-doc-show) ;; Show mini doc at point
   (global-set-key (kbd "C-c g") #'goto-line) ;; Goto line
   (global-set-key (kbd "C-c /") #'comment-line) ;; Comment marked block
+  (global-set-key (kbd "C-c <DEL>") #'delete-indentation) ;; Delete indentation
   
-
   ;;(setq lsp-enable-snippet nil)
   ;;:custom
   ;;(lsp-typescript-format-enable . nil)
@@ -53,17 +54,17 @@
   :commands (lsp))
 
 (use-package lsp-ui
-  :config
+  :init
   ;; Eldoc
   (setq lsp-eldoc-enable-hover nil)
   (setq lsp-eldoc-render-all nil)
   ;; Signature
-  (setq lsp-signature-auto-activate nil)
+  (setq lsp-signature-auto-activate t)
   (setq lsp-signature-render-documentation nil)
   ;; Headerline
   (setq lsp-headerline-breadcrumb-enable t)
-  ;; Lsp doc - Pretty annoying, we use 'lsp-describe-thing-at-point' instead
-  (setq lsp-ui-doc-enable nil)
+  ;; Lsp doc - we use 'lsp-describe-thing-at-point' instead
+  (setq lsp-ui-doc-enable t)
   (setq lsp-ui-doc-show-with-mouse nil)
   (setq lsp-ui-doc-show-with-cursor nil)
   ;; Lens
