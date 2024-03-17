@@ -7,6 +7,9 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (unless (fboundp 'package-activate-all) (package-initialize))
 
+;; No bell
+(setq visible-bell 1)
+
 ;; No top-bar
 (tool-bar-mode -1)
 (menu-bar-mode -1)
