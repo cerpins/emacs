@@ -15,6 +15,7 @@ auto-save-list
 tramp
 .\#*
 
+ido.last
 /backup/*
 
 # Org-mode
