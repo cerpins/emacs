@@ -29,13 +29,13 @@
 ;; Etc.
 (desktop-save-mode 1)
 (scroll-bar-mode 0)
-(global-display-line-numbers-mode 1)
-(setq display-line-numbers-width 3)
+(setq-default display-line-numbers-width 3)
 (setq display-line-numbers-type 'visual)
+(global-display-line-numbers-mode 1)
 (show-paren-mode 1)
 
 ;; Emacs files.
-(setq custom-file (concat user-emacs-directory ".init.custom.el"))
+(setq-default custom-file (concat user-emacs-directory ".init.custom.el"))
 (load-file custom-file)
 (custom-set-variables
  '(backup-directory-alist '(("." . "~/.emacs.d/backup/")))
@@ -51,3 +51,5 @@
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   ;; This is the old M-x.
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(use-package rust-mode)

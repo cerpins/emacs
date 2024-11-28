@@ -17,6 +17,7 @@ tramp
 
 ido.last
 /backup/*
+smex-items
 
 # Org-mode
 .org-id-locations
