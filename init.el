@@ -16,10 +16,14 @@
 (use-package naysayer-theme)
 (use-package ido-completing-read+)
 (use-package smex)
+(use-package rust-mode)
+(use-package company)
 
 ;; Fonts, themes
+(package-install-file "~/.emacs.d/mince-theme.el")
 (set-frame-font "-outline-Source Code Pro-regular-normal-normal-mono-16-*-*-*-c-*-iso10646-1")
-(load-theme 'naysayer t)
+;;(load-theme 'naysayer t)
+(load-theme 'mince t)
 
 ;; No bell, topbar, menubar
 (setq visible-bell 1)
@@ -48,8 +52,16 @@
 (ido-mode 1)
 (ido-ubiquitous-mode 1)
 (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  ;; This is the old M-x.
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is the old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(use-package rust-mode)
+(blink-cursor-mode 0)
+(global-company-mode)
+
+;; Keybinds
+
+(global-set-key (kbd "C-c c") 'recompile)
+;; (global-set-key (kbd "C-c d") 'dired-all)
+
+
