@@ -75,7 +75,7 @@
  mince-bg1 "#191b1b"
  mince-types "#69bac9"
  mince-comment "#84a9b4"
- mince-macro "#c08f76"
+ mince-macro "#be786f"
  mince-string "#d9e5e5"
  )
 
