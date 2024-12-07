@@ -11,19 +11,3 @@
    '(mince-theme smex rust-mode naysayer-theme ido-completing-read+ company))
  '(rust-always-locate-project-on-open t))
 
-; how to make a good theme?
-;; choose a good primary color for the 'default' foreground
-;;; should be easy to tell apart when there's lots of it (contrast)
-;;; should not be vibrant so it doesn't hurt to look at
-;;; tl;dr - contrast but not vibrant
-
-;; choose a background that makes the 'default' foreground contrasted
-;;; background should not be too dark or it becomes vibrant
-
-;; keywords - not sure, probably best to have something similar to foreground
-;; but of a different tint? try it
-
-;; choose a satured and light color for types
-;; choose a satured and dim color for comments
-
-;; macros and strings can be vibrant

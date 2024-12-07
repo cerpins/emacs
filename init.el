@@ -20,10 +20,8 @@
 (use-package company)
 
 ;; Fonts, themes
-;;(package-install-file "~/.emacs.d/mince-theme.el")
 (set-frame-font "-outline-Source Code Pro-regular-normal-normal-mono-16-*-*-*-c-*-iso10646-1")
 ;;(load-theme 'naysayer t)
-;;(load-theme 'mince t)
 
 ;; No bell, topbar, menubar
 (setq visible-bell 1)
@@ -71,13 +69,13 @@
 
 (setq
  mince-fg1 "#aea294"
- mince-vars "#a5bbbf"
+ mince-vars "#dacebd"
  mince-mid "#dae9ea"
  mince-fn "#dae9ea"
  mince-bg1 "#191b1b"
  mince-types "#69bac9"
- mince-comment "#628790"
- mince-macro "#a16e55"
+ mince-comment "#84a9b4"
+ mince-macro "#c08f76"
  mince-string "#d9e5e5"
  )
 
