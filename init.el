@@ -13,11 +13,15 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t) ;; Every require will automatically install
 
+;;; If some PKG is not found, just reload package repository
 (use-package naysayer-theme)
 (use-package ido-completing-read+)
 (use-package smex)
 (use-package rust-mode)
 (use-package company)
+
+(use-package tree-sitter)
+(use-package tree-sitter-langs)
 
 ;; Fonts, themes
 (set-frame-font "-outline-Source Code Pro-regular-normal-normal-mono-16-*-*-*-c-*-iso10646-1")
@@ -33,6 +37,7 @@
 (scroll-bar-mode 0)
 (setq-default display-line-numbers-width 3)
 (setq display-line-numbers-type 'visual)
+;;(setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)
 (show-paren-mode 1)
 
@@ -56,22 +61,30 @@
 
 (blink-cursor-mode 0)
 (global-company-mode)
+;;(global-tree-sitter-mode)
 
+;; Eglot for LSP
+(setq eldoc-display-functions '(eldoc-display-in-buffer)) ;; only use dedicated buffer for info
+(setq flymake-no-changes-timeout nil) ;; don't do diagnostics on edit
+(setq flymake-start-on-flymake-mode nil)
+(setq flymake-start-on-save-buffer nil)
+(setq eglot-ignored-server-capabilities '(:inlayHintProvider)) ;; stop using minibuf
 ;; Keybinds
 
-(global-set-key (kbd "C-c c") 'recompile)
+(global-set-key (kbd "C-c c") (lambda () (interactive)
+				 (progn (save-buffer)
+					(recompile)))) ;; make it also save it with prog
+(global-set-key (kbd "C-c C-x") (lambda () (interactive)(flymake-start t)))
 ;; (global-set-key (kbd "C-c d") 'dired-all)
-
-
-
 
 ;;;;; CUSTOM THEME
 
 (setq
  mince-fg1 "#aea294"
  mince-vars "#dacebd"
- mince-mid "#dae9ea"
+ mince-mid "#d0dddd"
  mince-fn "#dae9ea"
+ mince-bg2 "#00171f" ;; Better contrast in daylight
  mince-bg1 "#191b1b"
  mince-types "#69bac9"
  mince-comment "#84a9b4"
@@ -97,19 +110,22 @@
  `(font-lock-string-face ((t (:foreground ,mince-string))))
 
  ;; cursor
- '(cursor ((t (:background "#8ea1ad"))))
-
+ '(cursor ((t (:background "#998d7e"))))
+ '(region ((t (:background "#6c6b68" :foreground "black"))))
+ '(show-paren-match ((t (:background "#695f52"))))
+ 
  `(font-lock-variable-name-face ((t (:foreground ,mince-vars))))
  '(font-lock-warning-face ((t (:foreground "red" :bold t))))
  '(fringe ((t (:background "#3d3f3f"))))
  '(minibuffer-prompt ((t (:foreground "#1ea3df" :bold t))))
  '(mode-line ((t (:foreground "#b8b8b8" :background "#515151"))))
- '(region ((t (:background "#3c3c3c"))))
  '(rust-ampersand-face ((t (:foreground "#b8c6c6"))))
  
  '(secondary-selection ((t (:background "#111111"))))
  '(shadow ((t (:foreground "#4e5a63"))))
- '(show-paren-match ((t (:background nil))))
+
+ ;; custom
+ '(eglot-highlight-symbol-face ((t (:bold nil))))
  )
 
 

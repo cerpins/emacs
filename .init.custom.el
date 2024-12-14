@@ -8,6 +8,5 @@
  '(custom-safe-themes
    '("5267955ef9a9e8bc64cadd113c1b15166c352ceb1798d18bab97e7892db5866f" "d46cb99f59fb858b11cac130f3a53688cc4323f3ec4aae80688bdd5d00312b91" default))
  '(package-selected-packages
-   '(mince-theme smex rust-mode naysayer-theme ido-completing-read+ company))
+   '(tree-sitter-langs tree-sitter mince-theme smex rust-mode naysayer-theme ido-completing-read+ company))
  '(rust-always-locate-project-on-open t))
-

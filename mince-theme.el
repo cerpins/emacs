@@ -7,7 +7,7 @@
 (deftheme mince "DOCSTRING for mince")
 
 (custom-theme-set-faces 'mince
-			'(default ((t (:foreground "#929496" :background "#232527"))))
+			'(default ((t (:foreground "#929496" :background "#101113"))))
 			'(cursor ((t (:background "#8ea1ad"))))
 			'(font-lock-builtin-face ((t (:foreground "#5b5d60"))))
 			'(font-lock-comment-face ((t (:foreground "#9e9972"))))
@@ -15,7 +15,7 @@
 			'(font-lock-doc-face ((t (:foreground "#9e9972"))))
 			'(font-lock-function-name-face ((t (:foreground "#929496"))))
 			'(font-lock-keyword-face ((t (:foreground "#bebfc0"))))
-			'(font-lock-preprocessor-face ((t (:foreground "#626263"))))
+			'(font-lock-preprocessor-face ((t (:foreground "#e5edf1"))))
 			'(font-lock-string-face ((t (:foreground "#b9b98d"))))
 			'(font-lock-type-face ((t (:foreground "#69bac9"))))
 			'(font-lock-variable-name-face ((t (:foreground "#bebfc0"))))
