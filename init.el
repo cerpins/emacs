@@ -24,7 +24,7 @@
 (use-package tree-sitter-langs)
 
 ;; Fonts, themes
-(set-frame-font "-outline-Source Code Pro-regular-normal-normal-mono-16-*-*-*-c-*-iso10646-1")
+(set-frame-font "-outline-Source Code Pro-regular-normal-normal-mono-18-*-*-*-c-*-iso10646-1")
 ;;(load-theme 'naysayer t)
 
 ;; No bell, topbar, menubar
@@ -60,7 +60,6 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (blink-cursor-mode 0)
-(global-company-mode)
 ;;(global-tree-sitter-mode)
 
 ;; Eglot for LSP
@@ -69,11 +68,17 @@
 (setq flymake-start-on-flymake-mode nil)
 (setq flymake-start-on-save-buffer nil)
 (setq eglot-ignored-server-capabilities '(:inlayHintProvider)) ;; stop using minibuf
+(setq eglot-report-progress nil)
+(setq eglot-events-buffer-config '(size: nil))
+
+(global-company-mode) ;; automatically setup by eg
+
 ;; Keybinds
 
+(global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-c c") (lambda () (interactive)
-				 (progn (save-buffer)
-					(recompile)))) ;; make it also save it with prog
+				;; save and recompile
+				(progn (save-buffer) (recompile))))
 (global-set-key (kbd "C-c C-x") (lambda () (interactive)(flymake-start t)))
 ;; (global-set-key (kbd "C-c d") 'dired-all)
 
