@@ -5,12 +5,8 @@
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist '(("." . "~/.emacs.d/backup/")))
  '(compilation-disable-input t)
- '(custom-safe-themes
-   '("5267955ef9a9e8bc64cadd113c1b15166c352ceb1798d18bab97e7892db5866f" "d46cb99f59fb858b11cac130f3a53688cc4323f3ec4aae80688bdd5d00312b91" default))
  '(package-selected-packages
-   '(elgrep eglot markdown-mode tree-sitter-langs tree-sitter mince-theme smex rust-mode naysayer-theme ido-completing-read+ company))
- '(rust-always-locate-project-on-open t)
- '(warning-suppress-log-types '((jsonrpc))))
+   '(sr-speedbar rjsx-mode imenu-list tree-sitter-langs smex rust-mode naysayer-theme mince-theme markdown-mode ido-completing-read+ elgrep eglot-booster eglot company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,8 +30,10 @@
  '(minibuffer-prompt ((t (:foreground "#1ea3df" :bold t))))
  '(mode-line ((t (:foreground "#b8b8b8" :background "#515151"))))
  '(region ((t (:background "#6c6b68" :foreground "black"))))
- '(rust-ampersand-face ((t (:foreground "#b8c6c6"))))
+ '(rust-ampersand-face ((t (:foreground "#000000"))))
  '(rust-builtin-formatting-macro ((t (:foreground "#be786f"))))
  '(secondary-selection ((t (:background "#111111"))))
- '(shadow ((t (:foreground "#4e5a63"))))
- '(show-paren-match ((t (:background "#695f52")))))
+ '(shadow ((t (:foreground "#515151"))))
+ '(show-paren-match ((t (:background "#695f52"))))
+ '(speedbar-file-face ((t (:foreground "#84a9b4"))))
+ '(speedbar-selected-face ((t (:foreground "#dae9ea")))))
