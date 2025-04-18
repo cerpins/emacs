@@ -14,8 +14,10 @@
 ;;(setq display-line-numbers-type t)
 (global-display-line-numbers-mode 1)
 (show-paren-mode 1)
+(delete-selection-mode 1)
 ;;(add-to-list 'default-frame-alist '(fullscreen . fullheight))
 ;;(setq default-frame-alist '((undecorated . t)))
+(setq truncate-lines t)
 
 ;; Connect packages from MELPA archive
 (require 'package)
@@ -52,7 +54,8 @@
 
 ;; Emacs files.
 (setq-default custom-file (concat user-emacs-directory ".init.custom.el"))
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup/")))
+;; (setq backup-directory-alist '(("." . "~/.emacs.d/backup/")))
+;; (setq auto-save-file-name-transforms '(("." . "~/.emacs.d/backup-autosave/")))
 (setq create-lockfiles nil) 
 (load-file custom-file)
 (custom-set-variables
@@ -93,6 +96,7 @@
 
 (global-set-key (kbd "C-c C-r") 'xref-find-definitions)
 (global-set-key (kbd "C-c C-e") 'xref-go-back)
+(global-set-key (kbd "C-c C-w") 'eglot-code-actions)
 
 (global-set-key (kbd "C-c c") (lambda () (interactive)
 				;; save and recompile
@@ -182,6 +186,6 @@
  '(eglot-highlight-symbol-face ((t (:bold nil))))
  `(speedbar-selected-face ((t (:foreground ,mince-fn))))
  `(speedbar-file-face ((t (:foreground ,mince-comment))))
- )
+)
 
 
